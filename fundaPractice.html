@@ -1,0 +1,1091 @@
+<div class="slide-in grid-container">
+    <h5 class="grid-item">Select:</h5>
+    <div class="select-container">
+        <select id="testTypeSelect" name="testType">
+        <option value="nbt-mat-questions">Loading...</option>
+        </select>
+    </div>
+    <h5 class="grid-item">Subjects:</h5>
+    <div class="subjectSelectContainer">
+        <div class="NBT_Math-Martic-Math-Subjects checkbox-container">
+        <input type="checkbox" id="algebra" name="subjects" value="algebra" />
+        <label class="checkbox-label" for="algebra">Loading...</label>
+        </div>
+    </div>
+    <h5 class="grid-item">Level:</h5>
+    <div class="level-container grid-item">
+        <div class="levelCheckboxContainer">
+        <input type="checkbox" id="easy" name="level" value="easy" />
+        <label for="easy">Loading...</label><br />
+        </div>
+    </div>
+    <h5 class="grid-item">Question Pool:</h5>
+    <div class="level-container grid-item">
+        <div class="mode-container grid-item">
+        <div class="modeRadioButtons">
+            <input type="radio" id="Unanswered" name="pool" value="Unanswered" />
+            <label for="Unanswered">Unanswered</label>
+            <input
+            type="radio"
+            id="Answered-and-Unanswered"
+            name="pool"
+            value="Answered-and-Unanswered"
+            />
+            <label for="Answered-and-Unanswered">Answered and Unanswered</label>
+            <input type="radio" id="Incorrect" name="pool" value="Incorrect" />
+            <label for="Incorrect">Incorrect</label>
+            <input type="radio" id="Flagged" name="pool" value="Flagged" />
+            <label for="Flagged">Flagged</label>
+        </div>
+        </div>
+    </div>
+    <h5 id="numqHeading grid-item">Questions:</h5>
+    <div class="rangeParent grid-item">
+        <div class="rangeContainer">
+        <div class="rangeSliderContainer">
+            <span class="rangeBounds rangeBounds2">1</span>
+            <input
+            type="range"
+            id="questionSliderInput"
+            name="questionSliderInput"
+            min="1"
+            max="30"
+            value="1"
+            />
+            <span class="rangeBounds questionMaxSpan">30</span>
+        </div>
+
+        <input
+            type="number"
+            name="questionNumberInput"
+            min="1"
+            max="30"
+            id="questionNumberInput"
+            unlimited="false"
+        />
+        </div>
+        <button id="maximumNumberButton">Maximum</button>
+    </div>
+  
+    <h5 class="grid-item">Mode:</h5>
+    <div class="mode-container grid-item">
+        <div class="modeRadioButtons">
+        <input type="radio" id="learning" name="mode" value="learning" />
+        <label for="learning">Learning Mode</label>
+        <input type="radio" id="practice" name="mode" value="practice" />
+        <label for="practice">Practice Mode</label>
+        <input type="radio" id="exam" name="mode" value="exam" />
+        <label for="exam">Exam Mode</label>
+        </div>
+    </div>
+    </div>
+    
+    <div class="startButtonContainer">
+        <p id="formValidationMessage">2</p>
+    <button type="button" id="startButton">Start the Session</button>
+    <p id="questionNumberMessage"></p>
+    </div>
+
+    <style>
+    .subjectInnerContainer,
+    .levelInnerContainer {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .rangeSliderContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #questionNumberMessage {
+        font-size: 14px;
+        font-weight: 500;
+        padding: 0;
+        margin: 0;
+        display: absolute;
+    }
+
+    .rangeBounds2 {
+        margin-right: 22px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 7fr;
+        row-gap: 10px;
+    }
+
+    h5 {
+    font-size: 22px !important;
+
+    }
+
+    .subjectSelectContainer,
+    .mode-container,
+    .rangeParent,
+    .select-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .rangeParent {
+        align-items: center;
+    }
+
+    .rangeContainer {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+    }
+
+    .checkbox-container,
+    .modeRadioButtons {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    .checkbox-label,
+    .levelCheckboxContainer label {
+        margin: 2px 2px;
+        font-size: 14px;
+        display: inline-block;
+        padding: 10px;
+        background-color: #d8d8d860;
+        color: #000000;
+        border: 1px solid #4e4f51;
+        border-radius: 5px;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    @media (max-width: 991.98px) {
+        .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        }
+        h5 {
+        margin-bottom: 0;
+        }
+        .allSubjectsContainer,
+        .randomLevelContainer {
+        flex-basis: 100%;
+        display: flex;
+        justify-content: flex-start !important;
+        margin-bottom: 10px;
+        }
+
+        #testTypeSelect {
+        width: 65vw !important;
+        }
+
+        #questionSliderInput {
+        width: 70vw !important;
+        }
+
+        .rangeParent,
+        .rangeContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
+    }
+
+    input[type="checkbox"]:checked + label {
+        background-color: #2575fc;
+        color: white;
+        border-color: #4e4f51;
+    }
+
+    .modeRadioButtons input[type="radio"] {
+        display: none;
+    }
+
+    .modeRadioButtons label {
+        margin: 5px;
+        border-radius: 5px;
+        font-size: 14px;
+        padding: 10px;
+        background-color: #d8d8d860;
+        color: #000000;
+        border: 1px solid #4e4f51;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    @media (min-width: 1024px) {
+        .levelCheckboxContainer label:hover,
+        .checkbox-label:hover,
+        .allSubjectsButton:hover,
+        .randomLevelButton:hover,
+        #maximumNumberButton:hover,
+        label:hover {
+        background: rgba(55, 55, 120, 0.212);
+        }
+        .startButtonContainer > button:hover {
+        background: #2574fc52  !important;
+        color: black;
+        border: 2px solid black;
+        }   
+    }
+
+    .modeRadioButtons input[type="radio"]:checked + label {
+        background-color: #2575fc;
+        color: white;
+        border-color: #4e4f51;
+    }
+
+    button {
+        color: #000000;
+        margin: 50px 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif, serif;
+        cursor: pointer;
+    }
+
+    #questionSliderInput {
+        padding: 0 !important;
+        width: 30vw;
+        display: inline-block;
+        cursor: pointer;
+        font-size: 17px;
+        font-weight: 500;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif, serif;
+    }
+
+    #testTypeSelect {
+        cursor: pointer;
+        width: 40vw;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif, serif;
+        text-align: center;
+    }
+
+    #numqHeading {
+        display: inline-block;
+    }
+
+    .startButtonContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .startButtonContainer > button {
+        background: #2575fc !important;
+        color: white;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #4e4f51 !important;
+        border-radius: 5px; 
+        margin-right: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 38px;
+    }
+
+    .rangeBounds {
+        color: black;
+        font-size: 14px;
+        font-weight: 500;
+        margin: 0 10px;
+    }
+
+    .slide-in {
+        /* Set initial position outside the viewport */
+        transform: translateY(-100%);
+        /* Apply animation */
+        animation: slideIn 1s forwards;
+    }
+
+    @keyframes slideIn {
+        from {
+        /* Start from outside the viewport */
+        transform: translateY(-100%);
+        }
+
+        to {
+        /* Move to the original position */
+        transform: translateY(0);
+        }
+    }
+
+    .floating-element {
+        position: relative;
+        animation: floatAnimation 3s infinite alternate;
+    }
+
+    @keyframes floatAnimation {
+        10% {
+        transform: scale(1.2);
+        }
+        11% {
+        transform: scale(1);
+        }
+        100% {
+        transform: translate(850%, 0%);
+        }
+    }
+
+    #maximumNumberButton {
+        font-weight: 400;
+        margin: 10px 5px;
+        border-radius: 5px;
+        font-size: 14px;
+        display: inline-block;
+        padding: 10px;
+        background-color: #d8d8d860;
+        color: #000000;
+        border: 1px solid #4e4f51;
+        cursor: pointer;
+        user-select: none;
+        text-transform: capitalize;
+    }
+
+    #questionNumberInput {
+        font-size: 17px;
+        font-weight: 700;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif, serif;
+        border: 1px solid black;
+        width: 60px;
+        padding: 2px;
+        border-radius: 0;
+        margin: 0 10px;
+    }
+
+    .maximumClicked {
+        background-color: #2575fc !important;
+        color: white !important;
+        border-color: #4e4f51 !important;
+    }
+    .allSubjectsButtonClicked::before,
+    .randomLevelButtonClicked::before {
+        content: "";
+        position: absolute;
+        left: 38%;
+        top: 10%;
+        height: 20px;
+        width: 7px;
+        border-bottom: 5px solid #2575fc;
+        border-right: 5px solid #2575fc;
+        transform: rotate(45deg);
+        box-sizing: initial;
+    }
+    .randomLevelContainer,
+    .allSubjectsContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .allSubjectsButton,
+    .randomLevelButton {
+        display: flex;
+        margin: 0 5px;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        border-radius: 5px;
+        display: inline-block;
+        background-color: transparent;
+        border: 1px solid #4e4f5192;
+        cursor: pointer;
+        user-select: none;
+        width: 40px;
+        height: 40px;
+    }
+
+    .randomLevelCheckboxLabel,
+    .allSubjectsCheckboxLabel {
+        margin: 0 5px;
+        font-weight: 500;
+        color: black !important;
+    }
+
+    @keyframes tilt-n-move-shaking {
+        0% {
+        transform: translate(0, 0) rotate(0deg);
+        }
+        5% {
+        transform: translate(1px, 1px) rotate(1deg);
+        }
+        10% {
+        transform: translate(0, 0) rotate(0eg);
+        }
+        15% {
+        transform: translate(-1px, 1px) rotate(-1deg);
+        }
+        20% {
+        transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+        transform: translate(0, 0) rotate(0deg);
+        }
+        30% {
+        transform: translate(1px, 1px) rotate(1deg);
+        }
+        35% {
+        transform: translate(0, 0) rotate(0eg);
+        }
+        40% {
+        transform: translate(-1px, 1px) rotate(-1deg);
+        }
+        45% {
+        transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+        transform: translate(0, 0) rotate(0deg);
+        }
+        55% {
+        transform: translate(1px, 1px) rotate(1deg);
+        }
+        60% {
+        transform: translate(0, 0) rotate(0eg);
+        }
+        65% {
+        transform: translate(-1px, 1px) rotate(-1deg);
+        }
+        70% {
+        transform: translate(0, 0) rotate(0deg);
+        }
+        75% {
+        transform: translate(0, 0) rotate(0deg);
+        }
+        80% {
+        transform: translate(1px, 1px) rotate(1deg);
+        }
+        85% {
+        transform: translate(0, 0) rotate(0eg);
+        }
+        90% {
+        transform: translate(-1px, 5px) rotate(-1deg);
+        }
+        95% {
+        transform: translate(0, 0) rotate(0deg);
+        }
+        100% {
+        transform: translate(0, 0) rotate(0deg);
+        }
+    }
+
+    #formValidationMessage {
+        font-size: 18px;
+        border: 1px solid #2575fc;
+        background: #d8d8d84b;
+        margin: 10px 0 5px 0 !important;
+        text-align: center;
+        font-weight: 500;
+        padding: 10px 20px;
+        border-radius: 5px;
+        opacity: 0;
+        transition: opacity 2s ease;
+    }
+    .fade-in {
+    opacity: 1 !important;
+    transition: opacity 0.5s ease-in;
+    }
+
+    .fade-out {
+    opacity: 0 !important;
+    transition: opacity 0.5s ease-out;
+    }
+    .showFormValidationMessage {
+        animation: tilt-n-move-shaking 0.4s linear;
+    }
+    </style>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const username = "Admin";
+        const password = "Ov4H puAI tNaQ VuO7 I4Kg PGLc";
+        const testTypeSelect = document.getElementById("testTypeSelect");
+        const subjectSelectContainer = document.querySelector(
+        ".subjectSelectContainer"
+        );
+        const levelCheckboxContainer = document.querySelector(
+        ".levelCheckboxContainer"
+        );
+        const formValidationMessage = document.getElementById(
+        "formValidationMessage"
+        );
+        const questionNumberInput = document.getElementById("questionNumberInput");
+        const questionNumberMessage = document.getElementById(
+        "questionNumberMessage"
+        );
+
+        const maximumNumberButton = document.getElementById("maximumNumberButton");
+        const questionSliderInput = document.getElementById("questionSliderInput");
+        const questionMaxSpan = document.querySelector(".questionMaxSpan");
+        const startButton = document.getElementById("startButton");
+     
+        const hostname =
+        window.location.hostname === "127.0.0.1" || "localhost"
+            ? "fundamanje.com"
+            : window.location.hostname;
+        const protocol =
+        window.location.protocol === "http:" || ""
+            ? "https:"
+            : window.location.protocol;
+        const domain = protocol + "//" + hostname;
+
+        questionNumberInput.value = 1;
+        questionSliderInput.value = 1;
+        let randomLevel = false;
+     
+        let firstTimeAllSubjectsButtonClicked = false;
+        let firstTimeRandomLevelButtonClicked = false;
+        let maxQuestionsAndNumbersBool = false;
+        const quizListRoute = domain + "/wp-json/quiz-survey-master/v2/quizzlist/";
+        const quizIntoRounte = domain + "/wp-json/quiz-survey-master/v2/quizinfo/";
+        const unansweredCheckBox = document.getElementById("Unanswered");
+
+        function checkAllSubjects(e) {
+        let allSubjectsButton = document.querySelector(".allSubjectsButton");
+        if (!firstTimeAllSubjectsButtonClicked) {
+            e.target.parentNode.parentNode
+            .querySelectorAll('input[name="subjects"]')
+            .forEach((input) => (input.checked = true));
+            e.target.classList.add("allSubjectsButtonClicked");
+            firstTimeAllSubjectsButtonClicked = true;
+        } else {
+            firstTimeAllSubjectsButtonClicked = false;
+            e.target.parentNode.parentNode
+            .querySelectorAll('input[name="subjects"]')
+            .forEach((input) => (input.checked = false));
+            e.target.classList.remove("allSubjectsButtonClicked");
+        }
+        getMaxNumberOfQuestions(e);
+        }
+        function checkAllLevels(e) {
+        if (!firstTimeRandomLevelButtonClicked) {
+            e.target.parentNode.parentNode
+            .querySelectorAll("input[type='checkbox']")
+            .forEach((input) => (input.checked = true));
+            randomLevel = true;
+            e.target.classList.add("randomLevelButtonClicked");
+            firstTimeRandomLevelButtonClicked = true;
+        } else {
+            e.target.parentNode.parentNode
+            .querySelectorAll("input[type='checkbox']")
+            .forEach((input) => (input.checked = false));
+            randomLevel = false;
+            firstTimeRandomLevelButtonClicked = false;
+            e.target.classList.remove("randomLevelButtonClicked");
+        }
+        getMaxNumberOfQuestions(e);
+        }
+
+        fetch(quizIntoRounte, {
+        method: "GET",
+        headers: {
+            Authorization: "Basic " + btoa(username + ":" + password),
+            "Content-Type": "application/json",
+        },
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            
+   
+            let isFirstIteration = true;
+            testTypeSelect.innerHTML = "";
+            subjectSelectContainer.innerHTML = "";
+            levelCheckboxContainer.innerHTML = "";
+
+            data.forEach((quiz) => {
+            testTypeSelect.innerHTML += `<option data-id=${quiz.quiz_id} value="${quiz.quiz_name}">${quiz.quiz_name}</option>`;
+            const subjectDiv = document.createElement("div");
+            const checkboxContainer = document.createElement("div");
+            if (isFirstIteration) {
+                isFirstIteration = false;
+            } else {
+                subjectDiv.style.display = "none";
+                checkboxContainer.style.display = "none";
+            }
+            subjectDiv.classList.add(
+                `${quiz.quiz_name.replace(/ /g, "-")}-Subjects`
+            );
+
+            quiz.category_levels.forEach((level) => {
+                levelParts = level.split("||");
+                levelName = levelParts[0];
+                levelId = levelParts[1];
+                const checkbox = document.createElement("input");
+                checkbox.setAttribute("type", "checkbox");
+                checkbox.setAttribute(
+                "id",
+                `${levelName + quiz.quiz_name.replace(/ /g, "-")}`
+                );
+                checkbox.setAttribute("name", "level");
+                checkbox.setAttribute("value", `${levelName}`);
+                checkbox.setAttribute("data-id", `${levelId}`);
+
+                const label = document.createElement("label");
+                label.addEventListener("click", (e) => {
+                    randomLevel = false;
+                    firstTimeRandomLevelButtonClicked = false;
+                    e.target.parentNode.firstChild.children[1].classList.remove("randomLevelButtonClicked");
+                })
+                label.setAttribute("data-id", `${levelId}`);
+                label.setAttribute(
+                "for",
+                `${levelName + quiz.quiz_name.replace(/ /g, "-")}`
+                );
+                label.textContent = `${levelName}`;
+                checkboxContainer.append(checkbox, label);
+            });
+            const randomLevelCheckboxDiv = document.createElement("div");
+            const randomLevelCheckboxLabel = document.createElement("div");
+            randomLevelCheckboxLabel.classList.add("randomLevelCheckboxLabel");
+            randomLevelCheckboxLabel.textContent = "Random:";
+            randomLevelCheckboxDiv.className = "randomLevelButton";
+            randomLevelCheckboxDiv.addEventListener("click", checkAllLevels);
+            var levelFirstChild = checkboxContainer.firstChild;
+            let randomLevelContainer = document.createElement("div");
+            randomLevelContainer.classList.add("randomLevelContainer");
+            randomLevelContainer.append(
+                randomLevelCheckboxLabel,
+                randomLevelCheckboxDiv
+            );
+            checkboxContainer.insertBefore(randomLevelContainer, levelFirstChild);
+
+            checkboxContainer.classList.add(
+                `${quiz.quiz_name.replace(/ /g, "-")}-Levels`,
+                "levelInnerContainer"
+            );
+
+            quiz.category_subjects.forEach((subject) => {
+                subjectParts = subject.split("||");
+                subjectName = subjectParts[0];
+                subjectId = subjectParts[1];
+                const checkbox = document.createElement("input");
+                checkbox.setAttribute("type", "checkbox");
+                checkbox.setAttribute("data-id", `${subjectId}`);
+                checkbox.setAttribute(
+                "id",
+                `${
+                    subjectName.replace(/ /g, "-") +
+                    quiz.quiz_name.replace(/ /g, "-")
+                }`
+                );
+                checkbox.setAttribute("name", "subjects");
+                checkbox.setAttribute("value", subjectName);
+
+                const label = document.createElement("label");
+                label.setAttribute(
+                "for",
+                `${
+                    subjectName.replace(/ /g, "-") +
+                    quiz.quiz_name.replace(/ /g, "-")
+                }`,
+                "subjectSelectinnerContainer"
+                );
+                label.classList.add("checkbox-label");
+                label.addEventListener("click", (e) => {
+                    firstTimeAllSubjectsButtonClicked = false;
+                    e.target.parentNode.firstChild.children[1].classList.remove("allSubjectsButtonClicked");
+                })
+                label.setAttribute("data-id", `${subjectId}`);
+                label.innerHTML = subjectName;
+                subjectDiv.append(checkbox, label);
+            });
+            const allSubjectsButton = document.createElement("div");
+            const allSubjectsCheckboxLabel = document.createElement("div");
+            allSubjectsCheckboxLabel.textContent = "All:";
+            allSubjectsCheckboxLabel.classList.add("allSubjectsCheckboxLabel");
+            allSubjectsButton.className = "allSubjectsButton";
+            allSubjectsButton.addEventListener("click", checkAllSubjects);
+            subjectDiv.classList.add("subjectInnerContainer");
+            let allSubjectsContainer = document.createElement("div");
+            allSubjectsContainer.classList.add("allSubjectsContainer");
+            allSubjectsContainer.append(
+                allSubjectsCheckboxLabel,
+                allSubjectsButton
+            );
+            var subjectFirstChild = subjectDiv.firstChild;
+            subjectDiv.insertBefore(allSubjectsContainer, subjectFirstChild);
+
+            checkboxContainer.classList.add("row-reverse");
+            subjectSelectContainer.append(subjectDiv);
+            levelCheckboxContainer.append(checkboxContainer);
+            });
+
+            Array.from(subjectSelectContainer.children).forEach((div) => {
+            Array.from(div.children).forEach((child) => {
+                if (child.tagName === "INPUT") {
+                child.addEventListener("change", getMaxNumberOfQuestions);
+                }
+            });
+            });
+            // levelCheckBoxContainer
+            Array.from(levelCheckboxContainer.children).forEach((div) => {
+            Array.from(div.children).forEach((child) => {
+                if (child.tagName === "INPUT") {
+                child.addEventListener("change", getMaxNumberOfQuestions);
+                }
+            });
+            });
+
+            unansweredCheckBox.checked = true;
+            randomLevelButton = document.querySelector(".randomLevelButton");
+            allSubjectsButton = document.querySelector(".allSubjectsButton");
+            allSubjectsButton.click();
+            randomLevelButton.click(); 
+            const learningModeCheckBox = document.getElementById("learning")
+            learningModeCheckBox.checked = true;
+        });
+
+        function getMaxNumberOfQuestions(e) {
+        let level = Array.from(
+            document.querySelectorAll('input[name="level"]:checked')
+        ).map((input) => input.getAttribute("data-id"));
+        let levelNameArray = Array.from(
+            document.querySelectorAll('input[name="level"]:checked')
+        ).map((input) => input.nextSibling.innerText);
+
+        let selectedOption = testTypeSelect.options[testTypeSelect.selectedIndex];
+        let quizId = selectedOption.getAttribute("data-id");
+        let subjects = Array.from(
+            document.querySelectorAll('input[name="subjects"]:checked')
+        ).map((subject) => subject.getAttribute("data-id"));
+        let combinedArray = [...subjects, ...level];
+        combinedArray.unshift(quizId);
+        let slug = combinedArray.join("+");
+        let numberOfQuestionsUrl = `${domain}/wp-json/quiz-survey-master/v2/questioncount/${slug}`;
+
+        fetch(numberOfQuestionsUrl, {
+            method: "GET",
+            headers: {
+            Authorization: "Basic " + btoa(username + ":" + password),
+            "Content-Type": "application/json",
+            },
+        })
+            .then((response) => {
+            return response.json();
+            })
+            .then((data) => {
+            questionSliderInput.setAttribute("max", data);
+            questionMaxSpan.innerHTML = data;
+            questionNumberInput.setAttribute("max", data);
+
+            if (maxQuestionsAndNumbersBool) {
+                questionNumberInput.value = questionMaxSpan.innerHTML;
+                questionSliderInput.value = questionMaxSpan.innerHTML;
+            }
+
+            if(parseInt(questionNumberInput.value) > parseInt(questionMaxSpan.innerHTML) || parseInt(questionMaxSpan.value) == 0){
+                questionNumberInput.value = questionMaxSpan.innerHTML;
+                questionSliderInput.value = questionMaxSpan.innerHTML
+            }
+            })
+            
+            .catch((error) => {
+            console.error("Error fetching data:", error);
+            });
+    
+
+        }
+
+        function showFormValidationMessage(message) {
+        formValidationMessage.innerText = message;
+        formValidationMessage.style.transition = 'none';
+        formValidationMessage.classList.remove('fade-out');
+        
+        // Force a reflow to ensure the transition restarts
+        void formValidationMessage.offsetWidth;
+        
+        // Add the fade-in class to trigger the new transition
+        formValidationMessage.classList.add('fade-in');
+        // formValidationMessage.style.opacity = 'block';
+       
+        formValidationMessage.classList.add("showFormValidationMessage");
+
+        setTimeout(() => {
+            formValidationMessage.classList.add('fade-out');
+            formValidationMessage.classList.remove('fade-in');
+            formValidationMessage.classList.remove("showFormValidationMessage");
+        }, 5000);
+        }
+
+        function validateForm() {
+        let subjects = document.querySelectorAll(
+            'input[name="subjects"]:checked'
+        );
+
+        if (subjects.length === 0) {
+            showFormValidationMessage("Please select at least one subject.");
+            return false;
+        }
+
+        let level = document.querySelector('input[name="level"]:checked');
+        if (!level) {
+            showFormValidationMessage("Please select a difficulty level.");
+            return false;
+        }
+
+        let pool = document.querySelector('input[name="pool"]:checked');
+        if (!pool) {
+            showFormValidationMessage("Please select a question pool.");
+            return false;
+        }
+        let mode = document.querySelector('input[name="mode"]:checked');
+        if (!mode) {
+            showFormValidationMessage("Please select a mode.");
+            return false;
+        }
+        let questions = document.querySelector('input[name="mode"]:checked');
+
+        if (!parseInt(questionNumberInput.value) || parseInt(questionNumberInput.value) == 0) {
+            showFormValidationMessage("Please select the number of questions");
+            return false;
+        }
+
+        return true;
+        }
+
+        testTypeSelect.addEventListener("change", () => {
+            questionNumberInput.value = 1;
+            questionSliderInput.value = 1;  
+            questionMaxSpan.innerHTML = 30;
+            questionNumberInput.setAttribute("max", 30);
+            questionSliderInput.setAttribute("max", 30)  
+    
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(function (checkbox) {
+            checkbox.checked = false;
+        });
+        firstTimeAllSubjectsButtonClicked = false;
+        firstTimeRandomLevelButtonClicked = false;
+        const testTypeSelectValue = testTypeSelect.value;
+
+        const children = subjectSelectContainer.children;
+
+        for (let i = 0; i < children.length; i++) {
+            children[i].style.display = "none";
+        }
+
+        const children2 = levelCheckboxContainer.children;
+
+        for (let i = 0; i < children2.length; i++) {
+            children2[i].style.display = "none";
+        }
+
+        document.querySelector(
+            `.${testTypeSelectValue.replace(/ /g, "-")}-Subjects`
+        ).style.display = "flex";
+        document.querySelector(
+            `.${testTypeSelectValue.replace(/ /g, "-")}-Levels`
+        ).style.display = "flex";
+        buttonContainerParent =   document.querySelector(
+            `.${testTypeSelectValue.replace(/ /g, "-")}-Levels`
+        ).firstChild
+        randomLevelButton = buttonContainerParent.children[1]
+        subjectButtonContainerParent = document.querySelector(
+            `.${testTypeSelectValue.replace(/ /g, "-")}-Subjects`
+        ).firstChild
+        allSubjectButton = subjectButtonContainerParent.children[1]
+        unansweredCheckBox.checked = true;
+        allSubjectButton.click()
+        randomLevelButton.click(); 
+     
+        const learningModeCheckBox = document.getElementById("learning")
+        learningModeCheckBox.checked = true;
+        });
+
+        function constructURL() {
+        // Validate form
+        if (!validateForm()) {
+            return; // Stop execution if form is not valid
+        }
+        startButton.classList.add("floating-element");
+        let testTypeSelectValue = testTypeSelect.value;
+        let subjects = Array.from(
+            document.querySelectorAll('input[name="subjects"]:checked')
+        )
+            .map((subject) => subject.value)
+            .join(",");
+        let level = document.querySelectorAll(
+            'input[name="level"]:checked'
+        ).value;
+
+        let levelCheckboxInputValues = Array.from(
+            document.querySelectorAll('input[name="level"]:checked')
+        )
+            .map((input) => input.value)
+            .join(",");
+
+        questionNumberInputValue = questionNumberInput.value;
+
+        let mode = document.querySelector('input[name="mode"]:checked').value;
+        let pool = document.querySelector('input[name="pool"]:checked').value;
+        function convertToLowerCaseAndRemoveSpaces(inputString) {
+            return inputString.replace(/\s/g, "-").toLowerCase();
+        }
+
+        const lowerCaseString =
+            convertToLowerCaseAndRemoveSpaces(testTypeSelectValue);
+
+        const currentURL = window.location.href;
+
+        // Split the URL by '/' to extract the root domain
+        const parts = currentURL.split("/");
+        const rootDomain = parts[0] + "//" + parts[2];
+        const postForm = document.createElement("form")
+        // Create the form element
+                const form = document.createElement('form');
+                form.action = `${rootDomain}/quiz/${lowerCaseString}`;
+                form.method = 'post';
+
+                // Create hidden input fields
+                const hiddenFields = [
+                { name: 'subjects', value: `${convertToLowerCaseAndRemoveSpaces(subjects)}`},
+                { name: 'level', value: `${convertToLowerCaseAndRemoveSpaces(levelCheckboxInputValues)}`},
+                { name: 'questions', value: `${questionNumberInputValue}`},
+                { name: 'pool', value: `${convertToLowerCaseAndRemoveSpaces(pool)}` },
+                { name: 'mode', value: `${convertToLowerCaseAndRemoveSpaces(mode)}` }
+                ];
+
+                hiddenFields.forEach(field => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = field.name;
+                input.value = field.value;
+                form.appendChild(input);
+                });
+                document.body.appendChild(form);
+        function urlFunction() {
+            form.submit();
+        }
+
+        setTimeout(urlFunction, 1000);
+        }
+
+        startButton.addEventListener("click", constructURL);
+
+        function updateRangeValue() {
+        maximumButtonClicked = false;
+        maxQuestionsAndNumbersBool = false;
+        maximumNumberButton.classList.remove("maximumClicked");
+        questionNumberInput.value = questionSliderInput.value;
+        }
+
+
+        let maximumButtonClicked = false;
+
+
+        if (
+            parseInt(questionNumberInput.value) > parseInt(questionMaxSpan.innerHTML)
+        ) {
+            questionNumberInput.value = questionMaxSpan.innerHTML;
+            questionSliderInput.value = questionMaxSpan.innerHTML;  
+        }
+        
+        function updateQuestionNumber() {
+            if(questionNumberInput.value == 0){
+                questionNumberInput.value = 1;
+            }
+            if (questionNumberInput.value === "" || questionNumberInput.value.includes('e') || questionNumberInput.value.includes('E') || questionNumberInput.value.includes('.') || questionNumberInput.value.includes(',') || questionNumberInput.value.includes('+') || questionNumberInput.value.includes('-')) {
+            let newValue = questionNumberInput.value.replace(/e|-|E|.|,/g, '');
+            questionNumberInput.value = newValue;
+            } 
+            if(questionNumberInput.value > questionMaxSpan) {
+                questionNumberInput.value = questionMaxSpan.innerHTML;
+            }
+        maximumNumberButton.classList.remove("maximumClicked");
+        questionSliderInput.value = questionNumberInput.value;
+        maximumButtonClicked = false;
+        maxQuestionsAndNumbersBool = false;
+        if (
+            parseInt(questionNumberInput.value) >
+            parseInt(questionMaxSpan.innerHTML)
+        ) {
+            questionNumberInput.value = questionMaxSpan.innerHTML;
+            questionSliderInput.value = questionMaxSpan.innerHTML;
+        }
+        }
+        
+        questionNumberInput.addEventListener("keyup", function (event) { 
+        if (event.key >= "0" && event.key <= "9") {
+            updateQuestionNumber();
+        }
+            if (event.key == "," || event.key == "E" || event.key == "e" || event.key == "," || event.key == "." || event.key == "+" || event.key == "-"){
+                questionNumberInput.value = questionNumberInput.value;
+                event.preventDefault();
+            }
+
+        if(questionNumberInput.value == 0){
+                questionNumberInput.value = 1;
+            }
+        if (questionNumberInput.value === "" || questionNumberInput.value.includes('e') || questionNumberInput.value.includes('E') || questionNumberInput.value.includes('.') || questionNumberInput.value.includes(',') || questionNumberInput.value.includes('+') || questionNumberInput.value.includes('-')) {
+            let newValue = questionNumberInput.value.replace(/e|-|E|.|,/g, '');
+            questionNumberInput.value = newValue;
+        } 
+        });
+
+        questionNumberInput.addEventListener("paste", (e) => {
+            e.preventDefault();
+            let clipboardData = event.clipboardData || window.clipboardData;
+            let pastedText = clipboardData.getData('text');
+            if(pastedText === "" || pastedText.includes('e') || pastedText.includes('E') || pastedText.includes('.') || pastedText.includes(','))
+            if(pastedText > questionMaxSpan.innerHTML) {
+                pastedText =  questionMaxSpan.innerHTML
+            }
+            if(pastedText > questionMaxSpan.innerHTML) {
+                pastedText = questionMaxSpan.innerHTML;
+            }
+            e.target.value = pastedText
+        })
+
+        questionNumberInput.addEventListener("click", updateQuestionNumber);
+        questionNumberInput.addEventListener("change", updateQuestionNumber);
+        let events = ["change", "keyup", "keydown", "click"];
+
+        let eventListeners = ["questionNumberInput"];
+        eventListeners.forEach((element) => {
+        events.forEach((event) => {
+            document.getElementById(element).addEventListener(event, () => {
+            maximumButtonClicked = false;
+            maxQuestionsAndNumbersBool = false;
+            if (element === "questionNumberInput") {
+                maximumNumberButton.classList.remove("maximumClicked");
+            } else {
+                maximumNumberButton.classList.remove("maximumClicked");
+            }
+            });
+        });
+        });
+
+        function maximumClicked() {
+        if (maximumButtonClicked == false) {
+            maximumNumberButton.classList.add("maximumClicked");
+            maximumButtonClicked = true;
+            maxQuestionsAndNumbersBool = true;
+            questionNumberInput.value = questionMaxSpan.innerHTML;
+            questionSliderInput.value = questionMaxSpan.innerHTML;
+        } else {
+            maximumNumberButton.classList.remove("maximumClicked");
+            maximumButtonClicked = false;
+            maxQuestionsAndNumbersBool = false;
+            questionNumberInput.value = 1;
+            questionSliderInput.value = 1;
+        }
+        }
+        maximumNumberButton.addEventListener("click", maximumClicked);
+        questionSliderInput.addEventListener("change", updateRangeValue);
+        let radio = document.querySelectorAll("input[type='radio']");
+    });
+    </script>
